@@ -26,7 +26,7 @@ function getComputerChoice() {
 }
 
 function isGameFinished() {
-    return playerScore == 2 || computerScore == 2; 
+    return playerScore == 3 || computerScore == 3; 
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -49,8 +49,6 @@ function playRound(playerSelection, computerSelection) {
 
 function updateScore() {
     winner = roundStatus.toLowerCase();
-    player.textContent = `Player: ${playerScore}`;
-    computer.textContent = `Computer: ${computerScore}`;
     if(winner == "computer") {
         winnerStatus.textContent = "You lose!";
     } else if (winner == "player"){
@@ -58,23 +56,27 @@ function updateScore() {
     } else {
         winnerStatus.textContent = "Draw!";
     }
+    player.textContent = `Player: ${playerScore}`;
+    computer.textContent = `Computer: ${computerScore}`;
 }
 
 function finalStatus() {
-    return (playerScore < computerScore) ? finalMessage.textContent = 'You lose!': finalMessage.textContent = 'You win!';
+    return (playerScore < computerScore) ? (finalMessage.textContent = 'You lose!') : (finalMessage.textContent = 'You win!');
 }
 
 // refactor
 rockButton.addEventListener("click", (e) => {
     playerWordSelection = e.target.textContent;
     ComputerWordSelection = getComputerChoice();
-
     if (isGameFinished()) {
-        finalStatus();
         return;
     }
     playRound(playerWordSelection, ComputerWordSelection);
     updateScore();
+    if (isGameFinished()) {
+        finalStatus();
+        return;
+    }
     console.log(playerScore);
     console.log(computerScore);
     console.log(roundStatus);
@@ -85,11 +87,14 @@ paperButton.addEventListener("click", (e) => {
     ComputerWordSelection = getComputerChoice();
 
     if (isGameFinished()) {
-        finalStatus();
         return;
     }
     playRound(playerWordSelection, ComputerWordSelection);
     updateScore();
+    if (isGameFinished()) {
+        finalStatus();
+        return;
+    }
     console.log(playerScore);
     console.log(computerScore);
     console.log(roundStatus);
@@ -100,11 +105,14 @@ scissorsButton.addEventListener("click", (e) => {
     ComputerWordSelection = getComputerChoice();
 
     if (isGameFinished()) {
-        finalStatus();
         return;
     }
     playRound(playerWordSelection, ComputerWordSelection);
     updateScore();
+    if (isGameFinished()) {
+        finalStatus();
+        return;
+    }
     console.log(playerScore);
     console.log(computerScore);
     console.log(roundStatus);
