@@ -5,9 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/style.css">
   </head>
   <body>
+
+    <header class="header">
+      <h1 class="title">Rock-Paper-Scissors Game</h1>
+    </header>
+
+    <div class="buttons">
+      <button class="btn-click" id="rbtn" type="button">Rock</button>
+      <button class="btn-click" id="pbtn" type="button">Paper</button>
+      <button class="btn-click" id="sbtn" type="button">Scissors</button>
+    </div>
+
+    <div class="Score-Board">
+      <div id="score-info">
+        <h2 id="status"></h2>
+      </div>
+
+      <div class="ScoreBoard-Flex-Container">
+
+        </div>
+        <div class="Score-Flex-item" id="player-Score"> 
+          Player: 0
+        </div>
+        <div class="Score-Flex-item" id="computer-Score">
+          Computer: 0
+        </div>
+      </div>
+    </div>
+
 	<script src="../src/index.js"></script>
   </body>
 </html>
