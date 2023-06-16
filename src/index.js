@@ -8,11 +8,16 @@ let roundStatus = "";
 const rockButton = document.querySelector('#rbtn');
 const paperButton = document.querySelector('#pbtn');
 const scissorsButton = document.querySelector('#sbtn');
+const rstButton = document.querySelector('#restartbtn');
 
 // Scoredboard
 const winnerStatus = document.querySelector('#status');
 const player = document.querySelector('#player-Score');
 const computer = document.querySelector('#computer-Score');
+
+
+// final scores
+const finalMessage = document.querySelector('#final-message');
 
 function getComputerChoice() {
     const computerChoice = ["rock", "paper", "scissors"];
@@ -46,7 +51,6 @@ function updateScore() {
     winner = roundStatus.toLowerCase();
     player.textContent = `Player: ${playerScore}`;
     computer.textContent = `Computer: ${computerScore}`;
-    
     if(winner == "computer") {
         winnerStatus.textContent = "You lose!";
     } else if (winner == "player"){
@@ -54,17 +58,19 @@ function updateScore() {
     } else {
         winnerStatus.textContent = "Draw!";
     }
-
-
 }
 
+function finalStatus() {
+    return (playerScore < computerScore) ? finalMessage.textContent = 'You lose!': finalMessage.textContent = 'You win!';
+}
 
 // refactor
-rockButton.addEventListener("click", (e) =>{
+rockButton.addEventListener("click", (e) => {
     playerWordSelection = e.target.textContent;
     ComputerWordSelection = getComputerChoice();
 
     if (isGameFinished()) {
+        finalStatus();
         return;
     }
     playRound(playerWordSelection, ComputerWordSelection);
@@ -74,11 +80,12 @@ rockButton.addEventListener("click", (e) =>{
     console.log(roundStatus);
 });
 
-paperButton.addEventListener("click", (e) =>{
+paperButton.addEventListener("click", (e) => {
     playerWordSelection = e.target.textContent;
     ComputerWordSelection = getComputerChoice();
 
     if (isGameFinished()) {
+        finalStatus();
         return;
     }
     playRound(playerWordSelection, ComputerWordSelection);
@@ -88,11 +95,12 @@ paperButton.addEventListener("click", (e) =>{
     console.log(roundStatus);
 });
 
-scissorsButton.addEventListener("click", (e) =>{
+scissorsButton.addEventListener("click", (e) => {
     playerWordSelection = e.target.textContent;
     ComputerWordSelection = getComputerChoice();
 
     if (isGameFinished()) {
+        finalStatus();
         return;
     }
     playRound(playerWordSelection, ComputerWordSelection);
@@ -101,5 +109,17 @@ scissorsButton.addEventListener("click", (e) =>{
     console.log(computerScore);
     console.log(roundStatus);
 });
+
+rstButton.addEventListener("click", (e) => {
+    playerScore = 0;
+    computerScore = 0;
+    player.textContent = "Player: 0";
+    computer.textContent = "Computer: 0";
+    winnerStatus.textContent = "";
+    finalMessage.textContent = "";
+    console.log(playerScore);
+    console.log(computerScore);
+});
+
 
 
